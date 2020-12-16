@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Manage Data Assets &mdash; azure.ml 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Manage Jobs" href="job.html" />
+    <link rel="prev" title="Concepts" href="../concepts.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> azure.ml
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/jobs.html">Train Models (Create Jobs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/distributed-training.html">Distributed Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/endpoints.html">Deploy Models (WIP)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../concepts.html">Concepts</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Manage Data Assets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#upload-local-data">Upload local data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-data-asset-from-cloud-data">Create a Data asset from cloud data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference-data-in-another-storage-account">Reference data in another storage account</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#manage-datastore-connections">Manage Datastore Connections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#attach-an-external-datastore">Attach an external datastore</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="job.html">Manage Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Manage Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint.html">Manage Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html">Manage Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute.html">Compute Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html">Workspace</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/templates.html">ARM Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/feedback.html">Feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/qna.html">Q&amp;A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">azure.ml</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../concepts.html">Concepts</a> &raquo;</li>
+        
+      <li>Manage Data Assets</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/overview/concepts/data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="manage-data-assets">
+<h1>Manage Data Assets<a class="headerlink" href="#manage-data-assets" title="Permalink to this headline">¶</a></h1>
+<p>Data in Azure ML is used in the context of a Job.
+Data assets can be created from files on your local machine or as references to files in cloud storage.
+When you create a data asset from your local machine, you upload this data into the workspace’s default blob storage account (called ‘workspaceblobstore’).</p>
+<div class="section" id="upload-local-data">
+<h2>Upload local data<a class="headerlink" href="#upload-local-data" title="Permalink to this headline">¶</a></h2>
+<p>Move some input data to the cloud by creating and naming a data artifact, following the below convention:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ./iris/</span>
+<span class="go">az ml data upload -n irisdata -v 1 --path ./data</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-data-asset-from-cloud-data">
+<h2>Create a Data asset from cloud data<a class="headerlink" href="#create-a-data-asset-from-cloud-data" title="Permalink to this headline">¶</a></h2>
+<p>This example assumes you already have some data in cloud storage.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test_directory_dataset</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">datastore</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azureml:workspaceblobstore</span>
+<span class="nt">directory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v2test</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference-data-in-another-storage-account">
+<h2>Reference data in another storage account<a class="headerlink" href="#reference-data-in-another-storage-account" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="manage-datastore-connections">
+<h1>Manage Datastore Connections<a class="headerlink" href="#manage-datastore-connections" title="Permalink to this headline">¶</a></h1>
+<p>Datastore connections are used to securely connect to your storage services. Datastores store connection information without putting your authentication credentials and the integrity of your original data source at risk.</p>
+<p>They store connection information, like your subscription ID and token authorization in your Key Vault associated with the workspace, so you can securely access your storage without having to hard code them in your script.</p>
+<div class="section" id="attach-an-external-datastore">
+<h2>Attach an external datastore<a class="headerlink" href="#attach-an-external-datastore" title="Permalink to this headline">¶</a></h2>
+<p>The following command will attach an external storage account to your workspace.
+.. code-block:: console</p>
+<blockquote>
+<div><p>az ml datastore attach-blob -n anotherstorageaccount SAS_TOKEN</p>
+</div></blockquote>
+<p>Next, we can create a Data asset which references this other storage account.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">datafromsomewherelse</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">datastore</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azure:anotherstorageaccount</span>
+<span class="nt">directory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">examples/cocodata</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">az ml data create --file examples/datasets/datafromsomewhere.yml</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="job.html" class="btn btn-neutral float-right" title="Manage Jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../concepts.html" class="btn btn-neutral float-left" title="Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Microsoft
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

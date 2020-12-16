@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Manage Environments &mdash; azure.ml 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compute Resources" href="compute.html" />
+    <link rel="prev" title="Manage Endpoints" href="endpoint.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> azure.ml
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Cloud Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/jobs.html">Train Models (Create Jobs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/distributed-training.html">Distributed Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/endpoints.html">Deploy Models (WIP)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../concepts.html">Concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data.html">Manage Data Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html#manage-datastore-connections">Manage Datastore Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job.html">Manage Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Manage Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint.html">Manage Endpoints</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Manage Environments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-an-environment">Creating an environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-environment-using-existing-docker-image">Creating Environment using existing Docker Image:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-environment-using-dockerfile">Creating Environment using DockerFile:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-environment-using-conda-file">Creating Environment using Conda File:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-environment-using-dockerfile-conda-file">Creating Environment using DockerFile + Conda File:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-parameters">Environment Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="compute.html">Compute Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html">Workspace</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/templates.html">ARM Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/feedback.html">Feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/qna.html">Q&amp;A</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">azure.ml</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../concepts.html">Concepts</a> &raquo;</li>
+        
+      <li>Manage Environments</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/overview/concepts/environment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="manage-environments">
+<h1>Manage Environments<a class="headerlink" href="#manage-environments" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Environments are used to define the execution environment of a job or an endpoint.</p></li>
+<li><p>All environments are built as docker images.</p></li>
+<li><p>We provide convenience functions to generate a environment.</p></li>
+</ul>
+<div class="section" id="creating-an-environment">
+<h2>Creating an environment<a class="headerlink" href="#creating-an-environment" title="Permalink to this headline">¶</a></h2>
+<p>Environment can be created in number of ways. For example using docker file, conda file or even a combination of two. This section shows to represent and create environments using YAML files.</p>
+<p>Example - Create Environment from YAML file representing the environment.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">az ml environment create --file examples/environments/fastai-vision-env.yml</span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/environment.schema.json</span>
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fastai-vision</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">docker</span><span class="p">:</span>
+   <span class="nt">build</span><span class="p">:</span>
+     <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fastai.dockerfile</span>
+</pre></div>
+</div>
+<p>Environments can be created in number of ways. These examples shows YAML files representing environments for supported scenarios.</p>
+<div class="section" id="creating-environment-using-existing-docker-image">
+<h3>Creating Environment using existing Docker Image:<a class="headerlink" href="#creating-environment-using-existing-docker-image" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">az ml environment create --file examples/environments/fastai-env.yml</span>
+</pre></div>
+</div>
+<p>where <cite>fastai-env.yml</cite> contains:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fastai</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">docker</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker.io/fastai/fastai</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-environment-using-dockerfile">
+<h3>Creating Environment using DockerFile:<a class="headerlink" href="#creating-environment-using-dockerfile" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">az ml environment create --file examples/environments/fastai-vision-env.yml</span>
+</pre></div>
+</div>
+<p>where <cite>fastai-vision-env.yml</cite> contains:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># yaml-language-server: $schema=https://azuremlsdk2.blob.core.windows.net/latest/environment.schema.json</span>
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fastai-vision</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">docker</span><span class="p">:</span>
+   <span class="nt">build</span><span class="p">:</span>
+     <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fastai.dockerfile</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-environment-using-conda-file">
+<h3>Creating Environment using Conda File:<a class="headerlink" href="#creating-environment-using-conda-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">az ml environment create --file examples/environments/conda-env.yml</span>
+</pre></div>
+</div>
+<p>Where <cite>conda-env.yml</cite> contains:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">conda_env</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">conda_file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">environment.yml</span>
+</pre></div>
+</div>
+<p>where <cite>environment.yml</cite> contains:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example-environment</span>
+<span class="nt">channels</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python=3.6.1</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">numpy</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip</span>
+  <span class="p p-Indicator">-</span> <span class="nt">pip</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pandas</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-environment-using-dockerfile-conda-file">
+<h3>Creating Environment using DockerFile + Conda File:<a class="headerlink" href="#creating-environment-using-dockerfile-conda-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">az ml environment create --file examples/environments/docker-conda-env.yml</span>
+</pre></div>
+</div>
+<p>where <cite>docker-conda-env.yml</cite> contains:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">conda_env</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">docker</span><span class="p">:</span>
+  <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker.io/ubuntu/ubuntu</span>
+<span class="nt">conda_file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">environment.yml</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="environment-parameters">
+<h2>Environment Parameters<a class="headerlink" href="#environment-parameters" title="Permalink to this headline">¶</a></h2>
+<p><strong>Required</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>, type = string</p></li>
+</ul>
+<p><strong>Optional</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>, type = guid, defaults to auto-gen on creation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code>, type = string, default = <code class="docutils literal notranslate"><span class="pre">&quot;latest&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>, type = string, default = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tags</span></code>, type = map, default = <code class="docutils literal notranslate"><span class="pre">{}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker_image</span></code>, type = string, default = <code class="docutils literal notranslate"><span class="pre">&quot;azureml/default&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker_file</span></code>, type = string, default = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda_file</span></code>, type = string, default = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip_file</span></code>, type = string, default = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="compute.html" class="btn btn-neutral float-right" title="Compute Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="endpoint.html" class="btn btn-neutral float-left" title="Manage Endpoints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Microsoft
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
